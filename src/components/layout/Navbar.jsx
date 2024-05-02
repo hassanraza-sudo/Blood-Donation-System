@@ -1,16 +1,17 @@
 import React from "react";
 import bdrop from "../../assets/img/bdrop.png";
 import SearchPage from "./SearchPage";
-
+import { Link } from "react-router-dom";
 import "../../assets/css/Navbar.css";
 
 const Navbar = () => {
   return (
     <nav className="nav">
-      <a href="/home">
-        <img src={bdrop} alt="bdroplogo" />
-      </a>
-      <a href="/donate">DONATE/REQUEST</a>
+    < Link to="/"><img src={bdrop} alt="bdroplogo" /></Link>
+        
+    < Link to="/donate">DONATE/REQUEST </Link>
+    
+      
       {/* <Search /> */}
       <SearchPage />
     </nav>

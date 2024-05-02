@@ -1,12 +1,10 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 
-import UserRegister from "../user/userRegister";
-import UserLogin from "../user/userLogin";
-
+import Signup from "./Signup";
 //css
 import "../../assets/css/Donate.css";
-
+import Signin from "./Signin";
 const Donate = () => {
   return (
     <div className="donate">
@@ -18,8 +16,8 @@ const Donate = () => {
       </Link>
 
       <Routes>
-        <Route path="/reg/usr" component={UserRegister} />
-        <Route path="/login/usr" component={UserLogin} />
+        <Route path="/reg/usr" component={Signup} />
+        <Route path="/login/usr" component={Signin} />
       </Routes>
     </div>
   );
