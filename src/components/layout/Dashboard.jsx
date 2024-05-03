@@ -44,7 +44,7 @@ const Dashboard = () => {
           })}
         </tbody>
       </table>
-      {/* <img src={bfImg} alt="bg"/>*/}
+    
       <Footer />
     </div>
   );
