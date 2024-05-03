@@ -7,6 +7,11 @@ import UserDashboard from "./components/user/UserDashboard";
 import Donate from "./components/layout/Donate";
 import Signup from "./components/layout/Signup";
 import Signin from "./components/layout/Signin";
+import EmployeeLogin from "./components/employee/employeeLogin";
+import EmployeRegister from "./components/employee/employeeRegister";
+import EmpDashboard from "./components/employee/EmpDarshboard";
+
+
 import './App.css'
 
 
@@ -22,7 +27,10 @@ function App() {
         <Route exact path="/login/usr" element={<Signin/>} />
         <Route exact path="/reg/usr" element={<Signup />} />
         <Route exact path="/login/usr/dash" element={<UserDashboard />} />
-       
+        <Route exact path="/login/emp/dash" element={<EmpDashboard />} />
+        <Route exact path="/reg/emp" element={<EmployeRegister />} />
+        <Route exact path="/login/emp" element={<EmployeeLogin />} />
+           
         </Routes>
     </div>
 

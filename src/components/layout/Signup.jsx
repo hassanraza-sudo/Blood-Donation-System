@@ -180,7 +180,7 @@ options={[
     <Form.Item
       wrapperCol={{
         offset: 4,
-        span: 16,
+        span: 6,
       }}
     >
       <Button type="primary" htmlType="submit" style={{backgroundColor:"red"}}>
