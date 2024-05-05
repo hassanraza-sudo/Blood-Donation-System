@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Footer from "./Footer";
 
 //css
 import "../../assets/css/Dashboard.css";
@@ -45,7 +44,6 @@ const Dashboard = () => {
         </tbody>
       </table>
     
-      <Footer />
     </div>
   );
 };
