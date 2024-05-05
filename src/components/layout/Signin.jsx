@@ -1,44 +1,63 @@
 import React, { useState } from 'react';
 
-import "../../assets/css/Signin.css";
-
 function Signin() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // You can add your form submission logic here
+    console.log('Form submitted');
+  };
+
   return (
-    <div className="login">
-      <div className="login-screen">
-        <div className="app-title">
-          <h1> User Login</h1>
-        </div>
+    <form className="max-w-sm mx-auto pt-16" onSubmit={handleSubmit}>
+      <div className="mb-5">
+      <h1 className="text-3xl text-center mb-8">User Login</h1>
 
-        <div className="login-form">
-          <div className="control-group">
-            <input
-              type="text"
-              className="login-field"
-              value=""
-              placeholder="username"
-              id="login-name"
-            />
-            <label className="login-field-icon fui-user" htmlFor="login-name"></label>
-          </div>
-
-          <div className="control-group">
-            <input
-              type="password"
-              className="login-field"
-              value=""
-              placeholder="password"
-              id="login-pass"
-            />
-            <label className="login-field-icon fui-lock" htmlFor="login-pass"></label>
-          </div>
-
-          <a className="btn btn-primary btn-large btn-block" href="#">
-            login
-          </a>
-        </div>
+        <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your Username</label>
+        <input
+          type="username"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="username"
+          required
+        />
       </div>
-    </div>
+      <div className="mb-5">
+        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your password</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          required
+        />
+      </div>
+      <div className="flex items-start mb-5">
+        <div className="flex items-center h-5">
+          <input
+            id="remember"
+            type="checkbox"
+            checked={rememberMe}
+            onChange={(e) => setRememberMe(e.target.checked)}
+            className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+            required
+          />
+        </div>
+        <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember me</label>
+      </div>
+      <button
+        type="submit"
+        className="text-white bg-custom-red hover:bg-custom-red-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Submit
+      </button>
+    </form>
   );
 }
 
