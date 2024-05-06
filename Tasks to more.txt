@@ -1,0 +1,9 @@
+Add video at home page 
+add contents in dashbaoard of Emp and user.
+move blood stock table at user dashboard
+add emergency contacts and about.
+
+
+add 404 page 
+add close button icon in navbar
+fix and style dropdown button.
