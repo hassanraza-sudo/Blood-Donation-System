@@ -22,6 +22,9 @@ const Dashboard = () => {
   }, []);*/
 
   return (
+
+
+    <>
     <div className="dashboard">
       <h1>BLOOD STOCK</h1>
 
@@ -45,7 +48,7 @@ const Dashboard = () => {
       </table>
     
     </div>
-  );
+    </>);
 };
 
 export default Dashboard;
