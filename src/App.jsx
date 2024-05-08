@@ -17,8 +17,8 @@ import HandleRequest from "./components/bloodbank/HandleRequest";
 import Request from "./components/bloodbank/Request";
 import Testing from "./components/layout/Testing";
 import About from "./components/layout/About";
+import Contact from "./elements/Contact"
 import './App.css'
-
 function App() {
   return (
     <>
@@ -40,8 +40,9 @@ function App() {
           <Route exact path="/login/usr/dash/req" element={<Request/>} />
           <Route exact path="/test" element={<Testing/>} />
           <Route exact path="/about" element={<About/>} />
+          <Route exact path="/contact" element={<Contact/>} />
 
-
+         
         </Routes>   
       </div>
     </>

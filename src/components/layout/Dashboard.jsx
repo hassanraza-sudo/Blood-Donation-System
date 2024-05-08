@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+import DonationProcess from "../../elements/DonationProcess"
+import HeroSection from "../../elements/HeroSection"
 //css
 import "../../assets/css/Dashboard.css";
 
@@ -12,14 +13,14 @@ const Dashboard = () => {
   const [bloodTable, setbloodTable] = useState([]);
 
   //useEffect call
-/*  useEffect(() => {
+  useEffect(() => {
     axios
-      .get("http://localhost:3001/home")
+      .get("http://localhost:2000/login/emp/ub")
       .then(function (response) {
-        //console.log(response);
+        console.log(response);
         setbloodTable(response.data)
       });
-  }, []);*/
+  }, []);
 
   return (
 
@@ -48,6 +49,9 @@ const Dashboard = () => {
       </table>
     
     </div>
+    <HeroSection/>
+<DonationProcess/> 
+
     </>);
 };
 
