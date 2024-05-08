@@ -9,7 +9,13 @@ export default {
       'custom-red': '#a53b3b',
         'custom-red-600': "#9b3434"
       // Add more custom colors as needed
-    },},
+    },
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      // Add more custom font families as needed
+    },
+
+  },
   },
   plugins: [],
 }
