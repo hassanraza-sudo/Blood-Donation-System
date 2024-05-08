@@ -1,14 +1,23 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
 function Signin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
+    console.log(username,password);
     e.preventDefault();
-    // You can add your form submission logic here
-    console.log('Form submitted');
+    try{
+    const response = await axios.post("http://localhost:2000/login", {
+      userUserName: username,
+      userPassword: password
+    })
+    console.log(response.data);
+  }catch(error){
+    console.error("Error:", error);
+
+  }
   };
 
   return (
