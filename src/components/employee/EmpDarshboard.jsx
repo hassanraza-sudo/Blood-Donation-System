@@ -14,11 +14,11 @@ const EmpDashBoard = () => {
           UPDATE BLOOD STOCK
         </button>
       </Link>
-      <Link to="/login/emp/hr">
+      {/* <Link to="/login/emp/hr">
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mb-4 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">
           HANDLE REQUEST
         </button>
-      </Link>
+      </Link> */}
     </div>
   );
 };

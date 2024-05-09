@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import axios from "axios";
 import { motion } from "framer-motion";
 
 const UpdateHealth = () => {
@@ -10,26 +10,22 @@ const UpdateHealth = () => {
   const [userWeight, setUserWeight] = useState("");
   const [userStatus, setUserStatus] = useState("");
 
-  // Search for blood
-  useEffect(() => {
-    Axios.post("http://localhost:3001/login/emp/uh", {
-      userId: userId,
-    }).then((response) => {
-      setSearchList(response.data);
-    });
-  }, [userId]);
-
+  const checkUser = () =>{
+    axios.post("http://loalhost:2000/login/emp/uh",(req,res)=>{
+    user_id:userId
+  }).then(res=> {updateUserData}).catch(e => alert("user not found"))
+  }
   // Update user data
   const updateUserData = () => {
-    Axios.put("http://localhost:3001/login/emp/uh", {
+    axios.patch("http://localhost:3001/login/emp/uh", {
       user_id: userId,
       userVitals: userVitals,
       userHeight: userHeight,
       userWeight: userWeight,
       userStatus: userStatus,
     }).then((response) => {
-      alert(response.data.message);
-    });
+      alert("updated health");
+    }).catch(e => console.log("error "));
   };
 
   return (
@@ -44,6 +40,7 @@ const UpdateHealth = () => {
           onChange={(e) => setUserId(e.target.value)}
           required
         />
+        <button className="p-3 bg-red-600 rounded-2xl text-white" onClick={checkUser}>Search</button>
         <div className="overflow-x-auto mb-8">
           <table className="w-full">
             <thead>

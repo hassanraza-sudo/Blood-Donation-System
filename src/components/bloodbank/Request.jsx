@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const RequestFunction = () => {
   const [bloodGroup, setBloodGroup] = useState([]);
   const [reqBlood, setReqBlood] = useState("A+ve");
   const [reqUnit, setReqUnit] = useState(0);
+  const [userId, setUserId] = useState(""); // Assuming you have userId stored somewhere
 
   useEffect(() => {
     setBloodGroup([
-      { id: "A+ve", label: "A+ve" },
-      { id: "A-ve", label: "A-ve" },
-      { id: "B+ve", label: "B+ve" },
-      { id: "B-ve", label: "B-ve" },
-      { id: "AB+ve", label: "AB+ve" },
-      { id: "AB-ve", label: "AB-ve" },
-      { id: "O+ve", label: "O+ve" },
-      { id: "O-ve", label: "O-ve" },
-      { id: "PNull", label: "PNull" },
+      { id: "A+", label: "A+" },
+      { id: "A-", label: "A-" },
+      { id: "B+", label: "B+" },
+      { id: "B-", label: "B-" },
+      { id: "AB+", label: "AB+" },
+      { id: "AB-", label: "AB-" },
+      { id: "O+", label: "O+" },
+      { id: "O-", label: "O-" }
     ]);
   }, []);
 
@@ -27,14 +28,36 @@ const RequestFunction = () => {
     setReqUnit(e.target.value);
   };
 
+  const generateRequestId = () => {
+    // Assuming you have a function to generate a unique request ID
+    // Here, I'm just using a random number for demonstration purposes
+    return Math.floor(Math.random() * 1000);
+  };
+
   const request = () => {
-    // Instead of making an API call, you can handle the request locally
-    alert(`Blood Group: ${reqBlood}, Units: ${reqUnit}`);
+    const requestId = generateRequestId();
+    // Send request data with Axios
+    axios.post("http://localhost:2000/login/usr/dash/req", {
+      user_id: userId,
+      req_id: requestId,
+      blood_group: reqBlood,
+      units: reqUnit
+    })
+    .then(response => {
+      // Handle successful response
+      // console.log("Request sent successfully:", response.data);
+      alert("blood is available please collect it")
+      // You can also navigate to another page or show a success message
+    })
+    .catch(error => {
+      // Handle error
+      console.error("Error sending request:", error);
+    });
   };
 
   return (
     <div
-      className="flex justify-center items-center h-screen bg-cover bg-center"
+      className="flex justify-center items-center h-screen bg-cover bg-center p-20"
       style={{ backgroundImage: `url('https://cdn.pixabay.com/photo/2015/07/02/10/12/blood-828726_1280.jpg')` }}
     >
       <div className="bg-white p-8 rounded-lg shadow-lg">

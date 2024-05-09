@@ -12,12 +12,17 @@ import EmployeRegister from "./components/employee/employeeRegister";
 import EmpDashboard from "./components/employee/EmpDarshboard";
 import UpdateStock from "./components/bloodbank/UpdateStock";
 import UpdateHealth from "./components/bloodbank/UpdateHealth";
-import Search from "./components/bloodbank/Search";
-import HandleRequest from "./components/bloodbank/HandleRequest";
+// import HandleRequest from "./components/bloodbank/HandleRequest";
 import Request from "./components/bloodbank/Request";
+
 import Testing from "./components/layout/Testing";
 import About from "./components/layout/About";
 import Contact from "./elements/Contact"
+import BloodStock from "./components/layout/BloodStock";
+import SearchPage from "./components/layout/SearchPage"
+
+
+
 import './App.css'
 function App() {
   return (
@@ -35,12 +40,13 @@ function App() {
           <Route exact path="/login/emp" element={<EmployeeLogin />} />
           <Route exact path="/login/emp/ub" element={<UpdateStock />} />
           <Route exact path="/login/emp/uh" element={<UpdateHealth />} />
-          <Route exact path="/home/search/blood" element={<Search />} />
-          <Route exact path="/login/emp/hr" element={<HandleRequest />} />
+          {/* <Route exact path="/login/emp/hr" element={<HandleRequest />} /> */}
           <Route exact path="/login/usr/dash/req" element={<Request/>} />
           <Route exact path="/test" element={<Testing/>} />
           <Route exact path="/about" element={<About/>} />
           <Route exact path="/contact" element={<Contact/>} />
+          <Route exact path="/bloodstock" element={<BloodStock/>} />
+          <Route exact path="/searchpagetest" element={<SearchPage/>} />
 
          
         </Routes>   
