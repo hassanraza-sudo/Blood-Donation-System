@@ -1,110 +1,117 @@
 import React, { useState } from 'react';
-import { Button, Form, Input, InputNumber, Mentions, Select } from 'antd';
-import Axios from 'axios';
-
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 },
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 24 },
-  },
-};
+import axios from 'axios';
 
 const EmployeeRegister = () => {
-  const [empUserName, setempUsername] = useState("");
-  const [empPassword, setempPassword] = useState("");
-  const [empName, setempName] = useState("");
-  const [empMail, setempMail] = useState("");
-  const [empPhone, setempPhone] = useState("");
-  const [empAddress, setempAddress] = useState("");
+  const [formData, setFormData] = useState({
+    empUserName: '',
+    empPassword: '',
+    empName: '',
+    empMail: '',
+    empPhone: '',
+    empAddress: '',
+  });
 
-  const handleSubmit = () => {
-    // post-url
-    const regurl = "http://localhost:3001/reg/emp";
-    // post-req
-    Axios.post(regurl, {
-      empName: empName,
-      empMail: empMail,
-      empPhone: empPhone,
-      empAddress: empAddress,
-      empUserName: empUserName,
-      empPassword: empPassword,
-    }).then((response) => {
-      alert(response.data.message);
-    }).catch((error) => {
-      console.error('Error:', error);
+  const handleChange = (key, value) => {
+    setFormData({
+      ...formData,
+      [key]: value,
     });
   };
 
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:2000/reg/emp', formData);
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
-      <Form
-        {...formItemLayout}
-        variant="filled"
-        style={{ maxWidth: 600 }}
-        onFinish={handleSubmit}
-      >
-        <Form.Item
-          label="Fullname"
-          name="Fullname"
-          rules={[{ required: true, message: 'Please input your fullname!' }]}
-        >
-          <Input onChange={(e) => setempName(e.target.value)} />
-        </Form.Item>
+    <div className="flex justify-center mt-10">
+      <form onSubmit={handleSubmit} className="max-w-md">
+        <div className="mb-4">
+          <label htmlFor="empName" className="block mb-1">Fullname</label>
+          <input
+            type="text"
+            id="empName"
+            value={formData.empName}
+            onChange={(e) => handleChange('empName', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item
-          label="Emails"
-          name="Emails"
-          rules={[{ required: true, message: 'Please input your email!' }]}
-        >
-          <Input onChange={(e) => setempMail(e.target.value)} />
-        </Form.Item>
+        <div className="mb-4">
+          <label htmlFor="empMail" className="block mb-1">Email</label>
+          <input
+            type="email"
+            id="empMail"
+            value={formData.empMail}
+            onChange={(e) => handleChange('empMail', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item
-          label="Cell No"
-          name="PhoneNo"
-          rules={[{ required: true, message: 'Please input your phone number!' }]}
-        >
-          <Input onChange={(e) => setempPhone(e.target.value)} />
-        </Form.Item>
+        <div className="mb-4">
+          <label htmlFor="empPhone" className="block mb-1">Cell No</label>
+          <input
+            type="tel"
+            id="empPhone"
+            value={formData.empPhone}
+            onChange={(e) => handleChange('empPhone', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item
-          label="Address"
-          name="Address"
-          rules={[{ required: true, message: 'Please input your address!' }]}
-        >
-          <Input onChange={(e) => setempAddress(e.target.value)} />
-        </Form.Item>
+        <div className="mb-4">
+          <label htmlFor="empAddress" className="block mb-1">Address</label>
+          <input
+            type="text"
+            id="empAddress"
+            value={formData.empAddress}
+            onChange={(e) => handleChange('empAddress', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input onChange={(e) => setempUsername(e.target.value)} />
-        </Form.Item>
+        <div className="mb-4">
+          <label htmlFor="empUserName" className="block mb-1">Username</label>
+          <input
+            type="text"
+            id="empUserName"
+            value={formData.empUserName}
+            onChange={(e) => handleChange('empUserName', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item
-          label="Passwords"
-          name="Passwords"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password onChange={(e) => setempPassword(e.target.value)} />
-        </Form.Item>
+        <div className="mb-4">
+          <label htmlFor="empPassword" className="block mb-1">Password</label>
+          <input
+            type="password"
+            id="empPassword"
+            value={formData.empPassword}
+            onChange={(e) => handleChange('empPassword', e.target.value)}
+            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-red-500"
+            required
+          />
+        </div>
 
-        <Form.Item wrapperCol={{ offset: 10, span: 16 }}>
-          <Button type="primary" htmlType="submit" style={{ backgroundColor: 'red' }}>
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="py-2 px-4 bg-red-500 text-white rounded hover:bg-red-600 focus:outline-none focus:bg-red-600"
+          >
             Register
-          </Button>
-        </Form.Item>
-      </Form>
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

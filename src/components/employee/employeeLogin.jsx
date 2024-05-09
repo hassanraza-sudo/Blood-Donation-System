@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function employeeLogin() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // You can add your form submission logic here
-    console.log('Form submitted');
+    try{
+      const response = await axios.post("http://localhost:2000/emplogin/emp", {
+        empUserName: username,
+        empPassword: password
+      })
+      console.log(response.data);
+      alert("Sing In successfull");
+      navigate("/login/emp/dash")
+    }catch(error){
+      console.error("Error:", error);
+  
+    }
   };  
 
   return (

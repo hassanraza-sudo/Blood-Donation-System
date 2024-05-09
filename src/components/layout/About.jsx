@@ -10,7 +10,7 @@ const About = () => {
         <motion.div className="md:w-1/2 md:mr-8" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
          
          
-<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">About <mark class="px-2 text-white bg-red-600 rounded dark:bg-red-500">BLOOD</mark> Donation System</h1>
+<h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"> <mark class="px-2 text-white bg-red-600 rounded dark:bg-red-500">BLOOD</mark> Donation System</h1>
 
           <p className="text-lg mb-4 text-justify">
             The <span className="font-semibold">Blood Donation System</span> is dedicated to <span className="font-semibold">saving lives</span> by facilitating the process of blood donation. Our system connects donors with recipients in need of blood transfusions, ensuring a seamless and efficient process for all involved.
